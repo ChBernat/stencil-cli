@@ -1,6 +1,6 @@
 {
   "name": "@chbernat/stencil-cli",
-  "version": "1.0.32",
+  "version": "1.0.33",
   "description": "A command line interface for StencilJS",
   "main": "bin/stencil-cli.js",
   "scripts": {
