@@ -7,10 +7,12 @@ Stencil requires a recent LTS version of NodeJS and npm. Make sure you've instal
 
 You can install the Stencil CLI globally with command,
 ```bash
-npm i -g @nerdic-coder/stencil-cli
+npm i @chbernat/stencil-cli -g
 ```
 
 Now the `stencil-cli` command should be available in your command line tool.
+
+If you want to use it only for generation of your components you can install it as dev dependency (with flag -D).
 
 ## Usage
 
@@ -18,20 +20,18 @@ Now the `stencil-cli` command should be available in your command line tool.
 
 You can create a reusable stencil component or library with command,
 ```bash
-stencil start-component my-component
+stencil-cli start-component my-component
 ```
 
 Where `my-component` is the name you want for the component or library.
 
 This will create a folder with the basics that you need to develop your component.
 
-You can read more about how to create and publish Stencil components in my article: [How I created and published my first Stencil component](https://nerdic-coder.com/2018/05/27/how-i-created-and-published-my-first-stencil-component/) 
-
 ### Building an app
 
 You can build entire apps with Stencil, here is the command to get a starter app for Stencil,
 ```bash
-stencil start-app my-app
+stencil-cli start-app my-app
 ```
 
 Where `my-app` is the name you want for the app.
@@ -42,7 +42,7 @@ This will create a folder with the basics that you need to develop your awesome 
 
 With the following command you can generate a new Stencil component in your exisiting Stencil projects,
 ```bash
-stencil generate my-component
+stencil-cli generate my-component
 ```
 
 Where `my-component` is the name you want for the new component.
@@ -53,14 +53,14 @@ This will create a new folder for the component under `src/components`, with a c
 
 The following command is simply an alias to `npm start` that starts the Stencil development server.
 ```bash
-stencil start
+stencil-cli start
 ```
 
 ### Wildcard command
 
 If you write any other command after `stencil-cli` it acts like an alias for a npm run script.
 
-For example `stencil build` will run the `npm run build` command.
+For example `stenci-clil build` will run the `npm run build` command.
 
 ## Contribute
 
@@ -70,7 +70,7 @@ If you see anything that can be improved just let me know or fix it in a pull re
 
 To help develop this tool start with cloning it down to your machine and run npm install.
 ```bash
-git clone https://github.com/nerdic-coder/stencil-cli.git stencil-cli
+git clone https://github.com/ChBernat/stencil-cli stencil-cli
 cd stencil-cli
 npm install
 ```
