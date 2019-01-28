@@ -1,6 +1,6 @@
 {
-  "name": "@nerdic-coder/stencil-cli",
-  "version": "1.0.1",
+  "name": "@chbernat/stencil-cli",
+  "version": "1.0.2",
   "description": "A command line interface for StencilJS",
   "main": "bin/stencil-cli.js",
   "scripts": {
@@ -17,12 +17,12 @@
     "stencil",
     "cli"
   ],
-  "author": "Johan Axelsson",
+  "author": "Johan Axelsson, Christopher Bernat",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nerdic-coder/stencil-cli/issues"
+    "url": "https://github.com/ChBernat/stencil-cli/issues"
   },
-  "homepage": "https://github.com/nerdic-coder/stencil-cli#readme",
+  "homepage": "https://github.com/ChBernat/stencil-cli#readme",
   "dependencies": {
     "shelljs": "^0.8.2"
   }

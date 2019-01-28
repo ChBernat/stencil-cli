@@ -1,5 +1,5 @@
 # Stencil Command Line Interface
-The unofficial command line interface for StencilJS.
+This is unofficial extension to already existing Stencil-CLI which I have found lacking in such features as generating components. In future I will hopefully make a PR with this code to original Stencil's lib.
 
 ## Installation
 
@@ -10,7 +10,7 @@ You can install the Stencil CLI globally with command,
 npm i -g @nerdic-coder/stencil-cli
 ```
 
-Now the `stencil` command should be available in your command line tool.
+Now the `stencil-cli` command should be available in your command line tool.
 
 ## Usage
 
@@ -58,7 +58,7 @@ stencil start
 
 ### Wildcard command
 
-If you write any other command after `stencil` it acts like an alias for a npm run script.
+If you write any other command after `stencil-cli` it acts like an alias for a npm run script.
 
 For example `stencil build` will run the `npm run build` command.
 
@@ -80,4 +80,8 @@ To test your local changes run the following in the stencil-cli folder,
 npm link
 ```
 
-and now you should be able to run the `stencil` command anywhere and your changes is reflected instantly.
+and now you should be able to run the `stencil-cli` command anywhere and your changes is reflected instantly.
+
+### Author
+
+Many thanks to original author of the repository and code: https://github.com/nerdic-coder/stencil-cli
