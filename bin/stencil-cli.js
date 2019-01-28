@@ -4,12 +4,6 @@ const path = require('path');
 const fs = require('fs');
 
 const yargs = require('yargs');
-const minimist = require('minimist');
-
-const args = minimist(process.argv.slice(2), {
-  alias: {}
-})
-
 
 // The path to the installation directory of this tool
 const cliPath = path.join(path.dirname(__filename), '..');
