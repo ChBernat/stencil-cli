@@ -7,7 +7,7 @@
     "test": "jest"
   },
   "bin": {
-    "stencil": "bin/stencil-cli.js"
+    "stencil-cli": "bin/stencil-cli.js"
   },
   "repository": {
     "type": "git",
