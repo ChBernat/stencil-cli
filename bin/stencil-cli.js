@@ -1,78 +1,24 @@
 #! /usr/bin/env node
 const shell = require("shelljs");
 const path = require('path');
-const fs = require('fs');
-
 const yargs = require('yargs');
-
-// The path to the installation directory of this tool
-const cliPath = path.join(path.dirname(__filename), '..');
+const {generateComponent} = require('../tasks');
 
 const argv = yargs
-  .command('generate', 'upload a file', (yargs) => {
-  }, (argv) => {
-
-    const {name} = argv;
-    let pathToComponents = argv.path;
-    if (!pathToComponents) pathToComponents = 'src/components/';
-
-    if (!name) {
-      shell.echo('Please state the component name using --name flag.');
-      shell.exit(1);
+  .command('generate', 'Generate a component.', {
+    name: {
+      alias: 'n',
+      description: 'Name of a component directory.'
+    },
+    help: {
+      alias: 'h',
+    },
+    path: {
+      alias: 'p',
+      description: 'Path to the directory where component has to be placed.'
     }
-    // The uppercase version of the component alias
-    let componentName = capitalizeFirstLetter(name);
-    let componentParts = '';
-    // The tag name of the component alias
-    let componentTag = process.argv[3].toLowerCase();
-
-    const templatePath = path.join(cliPath, 'templates', 'component');
-
-    // Create the right formats for the given component name
-    if (componentName.includes('-')) {
-      componentParts = componentName.split("-");
-      componentName = '';
-      for (let part in componentParts) {
-        componentName += capitalizeFirstLetter(componentParts[part]);
-      }
-    } else {
-      componentParts = componentName.split(/(?=[A-Z])/);
-      componentTag = '';
-      let first = true;
-      for (let part in componentParts) {
-        if (first) {
-          componentTag += componentParts[part].toLowerCase();
-        } else {
-          componentTag += '-' + componentParts[part].toLowerCase();
-        }
-        first = false;
-      }
-    }
-
-    // Create component folder
-    const pathToComponentDir = path.join(pathToComponents, componentTag);
-    shell.mkdir('-p', pathToComponentDir);
-
-    const templateFiles = fs.readdirSync(templatePath);
-
-    templateFiles.forEach((fileName) => {
-      let fileExt = path.extname(fileName);
-      if(fileExt === '.ts') fileExt = '.spec.ts';
-      const componentFile = componentTag + fileExt;
-      shell.cp(path.join(templatePath, fileName), path.join(pathToComponentDir, componentFile));
-    });
-
-    // Replace the placeholders with the component name and tag name
-    shell.ls(path.join(pathToComponentDir, componentTag + '.*')).forEach(function (file) {
-      shell.sed('-i', 'COMPONENT_NAME', componentName, file);
-      shell.sed('-i', 'COMPONENT_TAG', componentTag, file);
-    });
-
-    shell.echo('Generated stencil component "' + componentName + '".');
-    shell.exit(0);
-  })
-  .alias('name', 'n')
-  .alias('path', 'p')
+  }, generateComponent)
+  .help()
   .argv;
 
 // Check that a command is given
@@ -141,11 +87,6 @@ if (process.argv[2] === 'start-component') {
   shell.exit(0);
 }
 
-// Command for generating a new stencil component within any stencil project, example 'stencil generate my-component'
-if (process.argv[2] === 'generate') {
-
-}
-
 // Alias for starting a stencil development server
 if (process.argv[2] === 'start') {
   shell.exec('npm start');
@@ -159,8 +100,4 @@ else if (process.argv[2] === 'test.watch') {
 else {
   // If the command is not found try it as an alias for a npm run script.
   shell.exec('npm run ' + process.argv[2]);
-}
-
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
 }
